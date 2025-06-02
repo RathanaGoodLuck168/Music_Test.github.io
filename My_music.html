@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Music Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e0f7fa;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #00796b;
+    }
+
+    audio {
+      margin-top: 30px;
+      width: 300px;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to My Music Player</h1>
+  <p>Enjoy the music!</p>
+
+  <header>🎵 My Music Playlist</header>
+
+  <div class="player">
+    <h2>Now Playing</h2>
+    <audio id="audioPlayer" controls>
+      <source id="audioSource" src="VANNDA_រសជាតិយ៉ាងម៉េច_HOW'S_IT_TASTE_OFFICIAL_MUSIC_VIDEO_ezmp3.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+    <div id="nowPlaying">VANNDA – រសជាតិយ៉ាងម៉េច (HOW’S IT TASTE)</div>
+
+    <div class="playlist">
+      <div class="track active"
+           data-src="VANNDA_រសជាតិយ៉ាងម៉េច_HOW'S_IT_TASTE_OFFICIAL_MUSIC_VIDEO_ezmp3.mp3"
+           data-title="VANNDA – រសជាតិយ៉ាងម៉េច (HOW’S IT TASTE)">
+        🎵 VANNDA – HOW’S IT TASTE
+      </div>
+
+      <div class="track"
+           data-src="NPN - Channavinlyna (Official Audio) [ ezmp3.cc ].mp3"
+           data-title="NPN – Channavinlyna (Official Audio)">
+        🎵 NPN – Channavinlyna
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const audioPlayer = document.getElementById('audioPlayer');
+    const audioSource = document.getElementById('audioSource');
+    const nowPlaying = document.getElementById('nowPlaying');
+    const tracks = document.querySelectorAll('.track');
+
+    tracks.forEach(track => {
+      track.addEventListener('click', () => {
+        // Update audio source and text
+        const src = track.getAttribute('data-src');
+        const title = track.getAttribute('data-title');
+        audioSource.src = src;
+        audioPlayer.load();
+        audioPlayer.play();
+        nowPlaying.textContent = title;
+
+        // Update active track
+        tracks.forEach(t => t.classList.remove('active'));
+        track.classList.add('active');
+      });
+    });
+  </script>
+
+
+  <footer>
+    &copy; 2025 My Music Site
+  </footer>
+
+</body>
+</html>
